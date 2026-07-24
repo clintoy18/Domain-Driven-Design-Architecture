@@ -1,8 +1,8 @@
 using System.Security.Cryptography;
 using System.Text;
-using DomainDrivenDesign.Application.Authentication;
+using DomainDrivenDesign.Application.Services.Authentication;
 
-namespace DomainDrivenDesign.API.Security
+namespace DomainDrivenDesign.API.Services.Security
 {
     public sealed class RefreshTokenService : IRefreshTokenService
     {

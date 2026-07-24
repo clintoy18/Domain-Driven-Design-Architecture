@@ -1,8 +1,9 @@
 using DomainDrivenDesign.Application.DTO.Authentication;
+using DomainDrivenDesign.Application.Services.Authentication;
 using DomainDrivenDesign.Domain.Entities;
 using DomainDrivenDesign.Domain.Interface;
 
-namespace DomainDrivenDesign.Application.Authentication
+namespace DomainDrivenDesign.Application.Services.Authentication
 {
     public sealed class AuthService : IAuthService
     {

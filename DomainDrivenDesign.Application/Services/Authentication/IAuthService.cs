@@ -1,6 +1,6 @@
 using DomainDrivenDesign.Application.DTO.Authentication;
 
-namespace DomainDrivenDesign.Application.Authentication
+namespace DomainDrivenDesign.Application.Services.Authentication
 {
     public interface IAuthService
     {

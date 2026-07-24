@@ -1,8 +1,9 @@
 using System.Security.Claims;
 using System.Text;
 using DomainDrivenDesign.API.Authentication;
-using DomainDrivenDesign.API.Security;
-using DomainDrivenDesign.Application.Authentication;
+using DomainDrivenDesign.API.Services.Authentication;
+using DomainDrivenDesign.API.Services.Security;
+using DomainDrivenDesign.Application.Services.Authentication;
 using DomainDrivenDesign.Application.Services;
 using DomainDrivenDesign.Domain.Interface;
 using DomainDrivenDesign.Infrastructure.Data;

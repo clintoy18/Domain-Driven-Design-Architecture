@@ -1,5 +1,5 @@
-using DomainDrivenDesign.Application.Authentication;
 using DomainDrivenDesign.Application.DTO.Authentication;
+using DomainDrivenDesign.Application.Services.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

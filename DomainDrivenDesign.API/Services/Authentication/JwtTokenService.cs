@@ -1,12 +1,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using DomainDrivenDesign.Application.Authentication;
+using DomainDrivenDesign.API.Authentication;
+using DomainDrivenDesign.Application.Services.Authentication;
 using DomainDrivenDesign.Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace DomainDrivenDesign.API.Authentication
+namespace DomainDrivenDesign.API.Services.Authentication
 {
     public sealed class JwtTokenService : IJwtTokenService
     {

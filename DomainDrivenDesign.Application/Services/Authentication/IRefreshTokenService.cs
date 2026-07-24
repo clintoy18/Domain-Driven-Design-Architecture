@@ -1,4 +1,4 @@
-namespace DomainDrivenDesign.Application.Authentication
+namespace DomainDrivenDesign.Application.Services.Authentication
 {
     public interface IRefreshTokenService
     {
