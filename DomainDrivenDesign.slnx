@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="DomainDrivenDesign.API/DomainDrivenDesign.API.csproj" />
+  <Project Path="DomainDrivenDesign.Application/DomainDrivenDesign.Application.csproj" />
+  <Project Path="DomainDrivenDesign.Domain/DomainDrivenDesign.Domain.csproj" />
+  <Project Path="DomainDrivenDesign.Infrastructure/DomainDrivenDesign.Infrastructure.csproj" />
+</Solution>

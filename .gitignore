@@ -1,0 +1,35 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+
+# VS Code
+.vscode/
+
+# Local settings and secrets
+appsettings.Local.json
+appsettings.*.local.json
+*.Development.local.json
+*.db
+*.db-shm
+*.db-wal
+
+# Logs and temp files
+*.log
+*.tmp
+TestResults/
+coverage/
+*.trx
+
+# OS files
+Thumbs.db
+Desktop.ini
