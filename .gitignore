@@ -1,6 +1,7 @@
 # Build output
 bin/
 obj/
+dist/
 
 # Visual Studio
 .vs/
@@ -26,9 +27,17 @@ appsettings.*.local.json
 # Logs and temp files
 *.log
 *.tmp
+*.tsbuildinfo
 TestResults/
 coverage/
 *.trx
+
+# Node / Vite
+AuthGuide.Vite/
+PRODUCT.md
+node_modules/
+vite.config.js
+vite.config.d.ts
 
 # OS files
 Thumbs.db
