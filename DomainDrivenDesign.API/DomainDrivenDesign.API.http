@@ -1,6 +1,69 @@
 @DomainDrivenDesign.API_HostAddress = http://localhost:5225
+@accessToken = paste-access-token-here
+@refreshToken = paste-refresh-token-here
+@userId = paste-user-id-here
 
-GET {{DomainDrivenDesign.API_HostAddress}}/weatherforecast/
-Accept: application/json
+### Register
+POST {{DomainDrivenDesign.API_HostAddress}}/api/auth/register
+Content-Type: application/json
 
-###
+{
+  "email": "admin@example.com",
+  "password": "Password123!",
+  "displayName": "Admin User"
+}
+
+### Login
+POST {{DomainDrivenDesign.API_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "Password123!"
+}
+
+### Current user
+GET {{DomainDrivenDesign.API_HostAddress}}/api/auth/me
+Authorization: Bearer {{accessToken}}
+
+### Refresh token
+POST {{DomainDrivenDesign.API_HostAddress}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Logout
+POST {{DomainDrivenDesign.API_HostAddress}}/api/auth/logout
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Assign role, Admin only
+POST {{DomainDrivenDesign.API_HostAddress}}/api/users/{{userId}}/roles
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "roleName": "Author"
+}
+
+### Get blogs, Admin/Author/Reader
+GET {{DomainDrivenDesign.API_HostAddress}}/api/blog
+Authorization: Bearer {{accessToken}}
+
+### Create blog, Admin/Author
+POST {{DomainDrivenDesign.API_HostAddress}}/api/blog
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "name": "DDD Auth",
+  "description": "JWT auth with role based access.",
+  "author": "Admin User",
+  "imageUrl": "https://example.com/image.png"
+}

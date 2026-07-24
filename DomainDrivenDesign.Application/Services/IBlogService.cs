@@ -1,18 +1,13 @@
-﻿using DomainDrivenDesign.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DomainDrivenDesign.Application.DTO.Blogs;
 
 namespace DomainDrivenDesign.Application.Services
 {
     public interface IBlogService
     {
-        Task<List<Blog>> GetAllAsync();
-        Task<List<Blog>> GetByIdAsync(int id);
-        Task<Blog> CreateAsync(Blog blog);
-        Task<int> UpdateAsync(int id, Blog blog);
-        Task<int> DeleteAsync(int id);
+        Task<List<BlogResponse>> GetAllAsync();
+        Task<BlogResponse?> GetByIdAsync(int id);
+        Task<BlogResponse> CreateAsync(CreateBlogRequest request);
+        Task<bool> UpdateAsync(int id, UpdateBlogRequest request);
+        Task<bool> DeleteAsync(int id);
     }
 }

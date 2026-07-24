@@ -1,45 +1,70 @@
-﻿using DomainDrivenDesign.Domain.Entities;
+using DomainDrivenDesign.Application.DTO.Blogs;
+using DomainDrivenDesign.Domain.Entities;
 using DomainDrivenDesign.Domain.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DomainDrivenDesign.Application.Services
 {
     public class BlogService : IBlogService
     {
-
         private readonly IBlogRepository _blogRepository;
 
         public BlogService(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
         }
-        public async Task<Blog> CreateAsync(Blog blog)
+
+        public async Task<BlogResponse> CreateAsync(CreateBlogRequest request)
         {
-            return await _blogRepository.CreateAsync(blog);
+            var blog = new Blog
+            {
+                Name = request.Name.Trim(),
+                Description = request.Description.Trim(),
+                Author = request.Author.Trim(),
+                ImageUrl = request.ImageUrl.Trim()
+            };
+
+            var createdBlog = await _blogRepository.CreateAsync(blog);
+            return ToResponse(createdBlog);
         }
 
-        public async Task<int> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            return await _blogRepository.DeleteAsync(id);
+            return await _blogRepository.DeleteAsync(id) > 0;
         }
 
-        public async Task<List<Blog>> GetAllAsync()
+        public async Task<List<BlogResponse>> GetAllAsync()
         {
-            return await _blogRepository.GetAllAsync();
+            var blogs = await _blogRepository.GetAllAsync();
+            return blogs.Select(ToResponse).ToList();
         }
 
-        public async Task<List<Blog>> GetByIdAsync(int id)
+        public async Task<BlogResponse?> GetByIdAsync(int id)
         {
-            return await _blogRepository.GetByIdAsync(id);
+            var blog = await _blogRepository.GetByIdAsync(id);
+            return blog is null ? null : ToResponse(blog);
         }
 
-        public async Task<int> UpdateAsync(int id, Blog blog)
+        public async Task<bool> UpdateAsync(int id, UpdateBlogRequest request)
         {
-            return await _blogRepository.UpdateAsync(id, blog);
+            var blog = new Blog
+            {
+                Name = request.Name.Trim(),
+                Description = request.Description.Trim(),
+                Author = request.Author.Trim(),
+                ImageUrl = request.ImageUrl.Trim()
+            };
+
+            return await _blogRepository.UpdateAsync(id, blog) > 0;
+        }
+
+        private static BlogResponse ToResponse(Blog blog)
+        {
+            return new BlogResponse(
+                blog.Id,
+                blog.Name,
+                blog.Description,
+                blog.Author,
+                blog.ImageUrl);
         }
     }
 }
