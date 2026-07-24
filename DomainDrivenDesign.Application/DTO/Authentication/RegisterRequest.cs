@@ -2,17 +2,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DomainDrivenDesign.Application.DTO.Authentication
 {
-    public sealed record RegisterRequest(
-        [property: Required]
-        [property: EmailAddress]
-        [property: StringLength(320)]
-        string? Email,
+    public sealed class RegisterRequest
+    {
+        [Required]
+        [EmailAddress]
+        [StringLength(320)]
+        public string? Email { get; set; }
 
-        [property: Required]
-        [property: StringLength(128, MinimumLength = 8)]
-        string? Password,
+        [Required]
+        [StringLength(128, MinimumLength = 8)]
+        public string? Password { get; set; }
 
-        [property: Required]
-        [property: StringLength(120, MinimumLength = 2)]
-        string? DisplayName);
+        [Required]
+        [StringLength(120, MinimumLength = 2)]
+        public string? DisplayName { get; set; }
+    }
 }

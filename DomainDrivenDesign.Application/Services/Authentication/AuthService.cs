@@ -200,12 +200,14 @@ namespace DomainDrivenDesign.Application.Services.Authentication
             await _refreshTokens.AddAsync(refreshToken, cancellationToken);
             await _refreshTokens.SaveChangesAsync(cancellationToken);
 
-            return new AuthResponse(
-                accessToken.Token,
-                accessToken.ExpiresAtUtc,
-                refreshTokenValue,
-                refreshToken.ExpiresAtUtc,
-                ToUserResponse(user, roles));
+            return new AuthResponse
+            {
+                AccessToken = accessToken.Token,
+                AccessTokenExpiresAtUtc = accessToken.ExpiresAtUtc,
+                RefreshToken = refreshTokenValue,
+                RefreshTokenExpiresAtUtc = refreshToken.ExpiresAtUtc,
+                User = ToUserResponse(user, roles)
+            };
         }
 
         private static IReadOnlyCollection<string> GetRoleNames(User user)
@@ -220,7 +222,13 @@ namespace DomainDrivenDesign.Application.Services.Authentication
 
         private static UserResponse ToUserResponse(User user, IReadOnlyCollection<string> roles)
         {
-            return new UserResponse(user.Id, user.Email, user.DisplayName, roles);
+            return new UserResponse
+            {
+                Id = user.Id,
+                Email = user.Email,
+                DisplayName = user.DisplayName,
+                Roles = roles
+            };
         }
 
         private static string NormalizeEmail(string? email)

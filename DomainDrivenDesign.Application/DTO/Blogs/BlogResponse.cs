@@ -1,9 +1,11 @@
 namespace DomainDrivenDesign.Application.DTO.Blogs
 {
-    public sealed record BlogResponse(
-        int Id,
-        string Name,
-        string Description,
-        string Author,
-        string ImageUrl);
+    public sealed class BlogResponse
+    {
+        public int Id { get; init; }
+        public string Name { get; init; } = string.Empty;
+        public string Description { get; init; } = string.Empty;
+        public string Author { get; init; } = string.Empty;
+        public string ImageUrl { get; init; } = string.Empty;
+    }
 }

@@ -59,12 +59,14 @@ namespace DomainDrivenDesign.Application.Services
 
         private static BlogResponse ToResponse(Blog blog)
         {
-            return new BlogResponse(
-                blog.Id,
-                blog.Name,
-                blog.Description,
-                blog.Author,
-                blog.ImageUrl);
+            return new BlogResponse
+            {
+                Id = blog.Id,
+                Name = blog.Name,
+                Description = blog.Description,
+                Author = blog.Author,
+                ImageUrl = blog.ImageUrl
+            };
         }
     }
 }

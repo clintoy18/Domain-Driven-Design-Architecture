@@ -1,9 +1,11 @@
 namespace DomainDrivenDesign.Application.DTO.Authentication
 {
-    public sealed record AuthResponse(
-        string AccessToken,
-        DateTime AccessTokenExpiresAtUtc,
-        string RefreshToken,
-        DateTime RefreshTokenExpiresAtUtc,
-        UserResponse User);
+    public sealed class AuthResponse
+    {
+        public string AccessToken { get; init; } = string.Empty;
+        public DateTime AccessTokenExpiresAtUtc { get; init; }
+        public string RefreshToken { get; init; } = string.Empty;
+        public DateTime RefreshTokenExpiresAtUtc { get; init; }
+        public UserResponse User { get; init; } = new();
+    }
 }
