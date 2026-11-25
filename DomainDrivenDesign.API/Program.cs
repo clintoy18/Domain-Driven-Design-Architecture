@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using System.Text;
 using DomainDrivenDesign.API.Authentication;
+using DomainDrivenDesign.API.Middleware;
 using DomainDrivenDesign.API.Services.Authentication;
 using DomainDrivenDesign.API.Services.Security;
 using DomainDrivenDesign.Application.Services.Authentication;
@@ -71,6 +72,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("CanManageBlogs", policy => policy.RequireRole("Admin", "Author"));
 });
 
+builder.Services.AddCustomMiddleware();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi(options =>
 {
@@ -109,6 +111,10 @@ builder.Services.AddOpenApi(options =>
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
+
+// Custom middleware goes first so it wraps the whole pipeline:
+// correlation ID + request logging, then the global exception handler.
+app.UseCustomMiddleware();
 
 if (app.Environment.IsDevelopment())
 {
